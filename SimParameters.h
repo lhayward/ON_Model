@@ -27,6 +27,7 @@ class SimParameters
     uint                 measPerBin_;
     uint                 numBins_;
     uint                 spinDim_;  //value of N for the O(N) model
+    bool                 printSpins_;
     MTRand               randomGen_;  //random number generator
     
   //public:

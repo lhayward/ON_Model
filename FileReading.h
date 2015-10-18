@@ -20,6 +20,7 @@ class FileReading
     typedef unsigned long ulong;
 
     //methods to read from the passed input stream:
+    static bool                 readBool      (std::ifstream* fin, char delim);
     static double               readDouble    (std::ifstream* fin, char delim);
     static std::vector<double>* readDoubleVec (std::ifstream* fin, char delim, char startChar,
                                                char endChar);

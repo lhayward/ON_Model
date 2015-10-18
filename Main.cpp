@@ -48,12 +48,13 @@ int main(int argc, char** argv)
   time_t            sec1, sec2;  //for timing
   
   //variables related to input/output data from/to files:
-  std::string fileSuffix        = getFileSuffix( argc, argv );
-  std::string paramFileName     = "params" + fileSuffix + ".txt";
-  std::string simParamStr       = "SIMULATION PARAMETERS";
-  std::string latticeParamStr   = "LATTICE PARAMETERS";
-  std::string modelParamStr     = "MODEL PARAMETERS";
-  std::string outFileName       = "bins" + fileSuffix + ".txt";
+  std::string fileSuffix         = getFileSuffix( argc, argv );
+  std::string paramFileName      = "params" + fileSuffix + ".txt";
+  std::string spinConfigFileName = "spinConfigs" + fileSuffix + ".txt";
+  std::string simParamStr        = "SIMULATION PARAMETERS";
+  std::string latticeParamStr    = "LATTICE PARAMETERS";
+  std::string modelParamStr      = "MODEL PARAMETERS";
+  std::string outFileName        = "bins" + fileSuffix + ".txt";
   std::string outFileName_clust;
   
   std::cout.precision(8);

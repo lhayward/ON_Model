@@ -15,7 +15,26 @@
 
 //typdefs needed because uint and ulong are return types:
 typedef FileReading::uint  uint;
-typedef FileReading::ulong ulong; 
+typedef FileReading::ulong ulong;
+
+/*****************#******** readBool(std::ifstream* fin, char delim) *************#************
+* This method reads in and parses a boolean from the given input stream.
+**********************************************************************************************/
+bool FileReading::readBool(std::ifstream* fin, char delim)
+{
+  std::string currLine;
+  std::size_t index;
+  bool result=0;
+  
+  if( fin!=NULL && fin->is_open() )
+  {
+    getline(*fin, currLine);
+    index = currLine.find_last_of(delim);
+    result = (strtoul( (currLine.substr(index+1)).c_str(), NULL, 0 ) != 0);
+  }
+  
+  return result;
+} //readDouble method 
 
 /************************* readDouble(std::ifstream* fin, char delim) *************************
 * This method reads in and parses a double from the given input stream.

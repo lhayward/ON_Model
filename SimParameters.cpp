@@ -41,6 +41,7 @@ SimParameters::SimParameters(std::string fileName, std::string startStr)
     measPerBin_      = FileReading::readUint     (&fin, EQUALS_CHAR);
     numBins_         = FileReading::readUint     (&fin, EQUALS_CHAR);
     spinDim_         = FileReading::readUint     (&fin, EQUALS_CHAR);
+    printSpins_      = FileReading::readBool     (&fin, EQUALS_CHAR);
     
     randomGen_.seed(seed_);
   }
@@ -84,6 +85,7 @@ void SimParameters::print()
             << "       Measurements per Bin = " << measPerBin_ << "\n"
             << "             Number of Bins = " << numBins_ << "\n"
             << "         Dimension of Spins = " << spinDim_ << "\n"
+            << "       Print Spins Configs? = " << printSpins_ << "\n"
             << std::endl;   
   
 } //print method
