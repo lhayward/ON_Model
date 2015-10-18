@@ -31,7 +31,8 @@ typedef unsigned int  uint;
 std::string getFileSuffix(int argc, char** argv);
 Hyperrectangle* readLattice(std::string fileName, std::string startStr);
 ON_Model* readModel(uint spinDim, std::string inFileName, std::string startStr, 
-                    std::string outFileName, Hyperrectangle* lattice, MTRand &randomGen);
+                    std::string outFileName, std::string spinConfigFileName, 
+                    Hyperrectangle* lattice, MTRand &randomGen);
 
 /**********************************************************************************************
 ******************************************** main *********************************************
@@ -50,11 +51,11 @@ int main(int argc, char** argv)
   //variables related to input/output data from/to files:
   std::string fileSuffix         = getFileSuffix( argc, argv );
   std::string paramFileName      = "params" + fileSuffix + ".txt";
-  std::string spinConfigFileName = "spinConfigs" + fileSuffix + ".txt";
   std::string simParamStr        = "SIMULATION PARAMETERS";
   std::string latticeParamStr    = "LATTICE PARAMETERS";
   std::string modelParamStr      = "MODEL PARAMETERS";
   std::string outFileName        = "bins" + fileSuffix + ".txt";
+  std::string spinConfigFileName = "spinConfigs" + fileSuffix + ".txt";
   std::string outFileName_clust;
   
   std::cout.precision(8);
@@ -66,8 +67,8 @@ int main(int argc, char** argv)
   lattice = readLattice( paramFileName, latticeParamStr );
   lattice->printParams();
 
-  model = readModel( params->spinDim_, paramFileName, modelParamStr, outFileName, lattice,
-                     params->randomGen_ );
+  model = readModel( params->spinDim_, paramFileName, modelParamStr, outFileName, 
+                     spinConfigFileName, lattice, params->randomGen_ );
   model->printParams();
   
   std::cout << "\n*** STARTING SIMULATION ***\n" << std::endl;
@@ -147,10 +148,12 @@ Hyperrectangle* readLattice(std::string fileName, std::string startStr)
   return new Hyperrectangle(&fin, fileName);
 }
 
-/******* readModel(uint spinDim, std::string inFileName, std::string startStr, ...      *******
-********           std::string outFileName, Hyperrectangle* lattice, MTRand &randomGen) ******/
+/********* readModel(uint spinDim, std::string inFileName, std::string startStr, ... **********
+**********           std::string outFileName, std::string spinConfigFileName, ...    **********
+**********           Hyperrectangle* lattice, MTRand &randomGen)                     *********/
 ON_Model* readModel(uint spinDim, std::string inFileName, std::string startStr, 
-                    std::string outFileName, Hyperrectangle* lattice, MTRand &randomGen )
+                    std::string outFileName, std::string spinConfigFileName, 
+                    Hyperrectangle* lattice, MTRand &randomGen )
 {
   ON_Model* result = NULL;
   std::ifstream fin;
@@ -161,11 +164,12 @@ ON_Model* readModel(uint spinDim, std::string inFileName, std::string startStr,
   
   if( spinDim == 1 )
   { 
-    result = new Ising_Model(&fin, outFileName, lattice, randomGen);
+    result = new Ising_Model(&fin, outFileName, spinConfigFileName, lattice, randomGen);
   }
   else
   {
-    result = new ON_Model_Ngeq2(spinDim, &fin, outFileName, lattice, randomGen);
+    result = new ON_Model_Ngeq2(spinDim, &fin, outFileName, spinConfigFileName, lattice, 
+                                randomGen);
   }
   return result;
 }

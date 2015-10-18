@@ -28,6 +28,7 @@ class ON_Model
     Measure         measures; //observables to record
     bool            warmupDone; //has the system finished warming up?
     std::ofstream   fout;
+    std::ofstream   fout_spins;
     Hyperrectangle* hrect_; //the hyperrectangular lattice on which the d.o.f. live
     bool*           inCluster_;  //boolean array for wolffUpdate indicating whether or not each
                                  //spin is in the cluster (redundant information to cluster 
@@ -49,7 +50,8 @@ class ON_Model
     uint*             clustSizes_rejected_;
     
   public:
-    ON_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* lattice);
+    ON_Model(std::ifstream* fin, std::string outFileName, std::string spinConfigFileName, 
+             Hyperrectangle* lattice);
     virtual ~ON_Model();
     
     //methods implemented in ON_Model class:

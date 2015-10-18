@@ -19,11 +19,13 @@
 typedef ON_Model_Ngeq2::uint uint;
 
 /******* ON_Model_Ngeq2(uint spinDim, std::ifstream* fin, std::string outFileName, ... ********
-********                Hyperrectangle* lattice, MTRand* randomGen)                    ********
+********                std::string spinConfigFileName, Hyperrectangle* lattice, ...   ********
+********                MTRand* randomGen)                                             ********
 ********                                 (constructor)                                 *******/
 ON_Model_Ngeq2::ON_Model_Ngeq2(uint spinDim, std::ifstream* fin, std::string outFileName, 
-                               Hyperrectangle* lattice, MTRand &randomGen)
-  : ON_Model(fin, outFileName, lattice)
+                               std::string spinConfigFileName, Hyperrectangle* lattice, 
+                               MTRand &randomGen)
+  : ON_Model(fin, outFileName, spinConfigFileName, lattice)
 {
   std::cout.precision(15);
   

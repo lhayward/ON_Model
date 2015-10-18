@@ -29,8 +29,8 @@ class Ising_Model : public ON_Model
     void   wolffUpdate       (MTRand &randomGen, bool pr);
     
   public:
-    Ising_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* lattice, 
-                MTRand &randomGen);
+    Ising_Model(std::ifstream* fin, std::string outFileName, std::string spinConfigFileName,
+                Hyperrectangle* lattice, MTRand &randomGen);
     virtual ~Ising_Model();
     
     virtual void localUpdate        (MTRand &randomGen);

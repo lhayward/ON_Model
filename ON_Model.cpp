@@ -12,10 +12,11 @@
 #include "FileReading.h"
 #include "ON_Model.h"
 
-/***************** ON_Model(std::ifstream* fin, std::string outFileName, ... ******************
-******************          Hyperrectangle* lattice)                         ******************
-******************                       (constructor)                       *****************/
-ON_Model::ON_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* lattice)
+/************* ON_Model(std::ifstream* fin, std::string outFileName, ...         **************
+**************          std::string spinConfigFileName, Hyperrectangle* lattice) **************
+**********                               (constructor)                                ********/
+ON_Model::ON_Model(std::ifstream* fin, std::string outFileName, std::string spinConfigFileName,
+                   Hyperrectangle* lattice)
 { 
   const char EQUALS_CHAR = '=';
   D_ = 0;
@@ -47,6 +48,9 @@ ON_Model::ON_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* 
   
   fout.open(outFileName.c_str());
   fout.precision(15);
+  
+  fout_spins.open(spinConfigFileName.c_str());
+  fout_spins.precision(15);
   
   warmupDone = false;
   
@@ -85,7 +89,8 @@ ON_Model::ON_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* 
 /********************************** ~ON_Model() (destructor) *********************************/
 ON_Model::~ON_Model()
 { 
-  fout.close(); 
+  fout.close();
+  fout_spins.close(); 
   
   if( inCluster_ != NULL )
   { delete[] inCluster_; }

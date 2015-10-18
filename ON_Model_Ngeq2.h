@@ -32,8 +32,8 @@ class ON_Model_Ngeq2 : public ON_Model
     void   wolffUpdate           (MTRand &randomGen, uint start, uint end, bool pr);
     
   public:
-    ON_Model_Ngeq2(uint spinDim, std::ifstream* fin, std::string outFileName, 
-                   Hyperrectangle* lattice, MTRand &randomGen);
+    ON_Model_Ngeq2(uint spinDim, std::ifstream* fin, std::string outFileName,
+                   std::string spinConfigFileName, Hyperrectangle* lattice, MTRand &randomGen);
     virtual ~ON_Model_Ngeq2();
     
     virtual void localUpdate        (MTRand &randomGen);

@@ -18,12 +18,14 @@
 //typdef needed because uint is a return types:
 typedef Ising_Model::uint uint;
 
-/**************** Ising_Model(std::ifstream* fin, std::string outFileName, ... ****************
-*****************             Hyperrectangle* lattice, MTRand* randomGen)      ****************
-*****************                        (constructor)                         ***************/
-Ising_Model::Ising_Model(std::ifstream* fin, std::string outFileName, Hyperrectangle* lattice, 
+/********** Ising_Model(std::ifstream* fin, std::string outFileName, ...             **********
+***********             std::string spinConfigFileName, Hyperrectangle* lattice, ... **********
+***********             MTRand* randomGen)                                           **********
+***********                              (constructor)                               *********/
+Ising_Model::Ising_Model(std::ifstream* fin, std::string outFileName, 
+                         std::string spinConfigFileName,Hyperrectangle* lattice, 
                          MTRand &randomGen)
-  : ON_Model(fin, outFileName, lattice)
+  : ON_Model(fin, outFileName, spinConfigFileName, lattice)
 {
   std::cout.precision(15);
   
