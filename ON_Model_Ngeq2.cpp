@@ -367,3 +367,9 @@ void ON_Model_Ngeq2::wolffUpdate(MTRand &randomGen, uint start, uint end, bool p
   { delete r; }
   r = NULL;
 } //wolffUpdate()
+
+/**************************************** writeSpins() ***************************************/
+void ON_Model_Ngeq2::writeSpins()
+{ 
+  spins_->print(&fout_spins); 
+}

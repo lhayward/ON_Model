@@ -6,6 +6,7 @@
 * File:   VectorSpins.cpp
 **********************************************************************************************/
 
+#include <fstream>
 #include <iostream>
 #include "Vector_NDim.h"
 #include "VectorSpins.h"
@@ -63,6 +64,16 @@ void VectorSpins::print()
     spins_[i]->print();
   }
   std::cout << std::endl;
+} //print method
+
+/********************************* print(std::ofstream* fout) ********************************/
+void VectorSpins::print(std::ofstream* fout)
+{
+  for( uint i=0; i<N_; i++ )
+  {
+    spins_[i]->print(fout);
+  }
+  (*fout) << std::endl;
 } //print method
 
 /******************************** randomize(MTRand* randomGen) *******************************/

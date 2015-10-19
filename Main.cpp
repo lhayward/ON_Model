@@ -102,6 +102,8 @@ int main(int argc, char** argv)
       } //loop over measurements
       model->writeBin((i+1), params->measPerBin_, params->sweepsPerMeas_);
       
+      if( params->printSpins_ )
+      { model->writeSpins(); }
       if( (i+1)%100==0 )
       { std::cout << (i+1) << " Bins Complete" << std::endl; }
     } //loop over bins

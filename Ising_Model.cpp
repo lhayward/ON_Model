@@ -233,3 +233,9 @@ void Ising_Model::wolffUpdate(MTRand &randomGen, bool pr)
   
   clearCluster(cluster);
 } //wolffUpdate()
+
+/**************************************** writeSpins() ***************************************/
+void Ising_Model::writeSpins()
+{ 
+  spins_->print(&fout_spins); 
+}

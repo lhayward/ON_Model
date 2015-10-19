@@ -41,6 +41,7 @@ class ON_Model_Ngeq2 : public ON_Model
     virtual void printSpins         ();
     virtual void randomizeLattice   (MTRand &randomGen);
     virtual void sweep              (MTRand &randomGen, bool pr);
+    virtual void writeSpins         ();
 };  
 
 #endif  //ON_MODEL_NGEQ2

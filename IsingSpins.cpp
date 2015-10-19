@@ -9,6 +9,7 @@
 * (-1 or +1, respectively).
 **********************************************************************************************/
 
+#include <fstream>
 #include <iostream>
 #include "IsingSpins.h"
 
@@ -57,6 +58,20 @@ void IsingSpins::print()
     std::cout << (2*spins_[i] - 1) << " "; 
   }
   std::cout << std::endl;
+} //print method
+
+/********************************* print(std::ofstream* fout) ********************************/
+void IsingSpins::print(std::ofstream* fout)
+{
+  for( uint i=0; i<N_; i++ )
+  { 
+    //print an extra space if spin i is in the +1 state:
+    if( spins_[i] )
+    {  (*fout) << " "; }
+    
+    (*fout) << (2*spins_[i] - 1) << " "; 
+  }
+  (*fout) << std::endl;
 } //print method
 
 /******************************** randomize(MTRand* randomGen) *******************************/

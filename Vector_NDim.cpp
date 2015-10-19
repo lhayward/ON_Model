@@ -8,6 +8,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
 #include "Vector_NDim.h"
 
@@ -264,6 +265,32 @@ void Vector_NDim::print()
   for( uint i=0; i<(N_-1); i++ )
   { std::cout << v_[i] << " , "; }
   std::cout << v_[N_-1] << " ]" << std::endl;
+}
+
+/********************************* print(std::ofstream *fout) ********************************/
+void Vector_NDim::print(std::ofstream *fout)
+{
+  double angle=0;
+  
+  if(N_==2)  //for N=2 case, print angle
+  {
+    angle = atan( std::abs( (v_[1])*1.0/(v_[0]) ) );
+    
+    if( (v_[0] < 0) && (v_[1] > 0) )  //fix 2nd quadrant
+    { angle = pi - angle; }
+    else if( (v_[0] < 0) && (v_[1] < 0) ) //fix 3rd quadrant
+    { angle = pi + angle; }
+    else if( (v_[0] > 0) && (v_[1] < 0) ) //fix 4th quadrant
+    { angle = 2*pi - angle; }
+    (*fout) << angle << " ";
+  }
+  else
+  {
+    (*fout) << "[ "; 
+    for( uint i=0; i<(N_-1); i++ )
+    { (*fout) << v_[i] << " , "; }
+    (*fout) << v_[N_-1] << " ]" << std::endl;
+  }
 }
 
 /******************************* reflectOverUnitVecAndNormalize *******************************

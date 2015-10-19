@@ -9,6 +9,8 @@
 #ifndef ISING_SPINS_H
 #define ISING_SPINS_H
 
+#include <fstream>
+#include <iostream>
 #include "MersenneTwister.h"
 
 class IsingSpins 
@@ -27,6 +29,7 @@ class IsingSpins
     void flipSpin(uint i);
     int  getSpin(uint i);
     void print();
+    void print(std::ofstream* fout);
     void randomize(MTRand &randomGen);
 };
 

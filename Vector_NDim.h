@@ -14,6 +14,7 @@
 class Vector_NDim 
 {
   private:
+    static const double pi = 3.14159265358979323846;
   public:
     typedef unsigned int  uint;
     
@@ -40,6 +41,7 @@ class Vector_NDim
     void         multiply(double c);
     void         normalize();
     void         print();
+    void         print(std::ofstream *fout);
     void         reflectOverUnitVecAndNormalize(Vector_NDim* r);
     void         subtract(Vector_NDim* vec2);
 };

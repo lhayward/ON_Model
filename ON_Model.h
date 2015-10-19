@@ -71,6 +71,7 @@ class ON_Model
     virtual void printSpins         () = 0;
     virtual void randomizeLattice   (MTRand &randomGen) = 0;
     virtual void sweep              (MTRand &randomGen, bool pr) = 0;
+    virtual void writeSpins         () = 0;
     
   protected:
     void clearCluster(std::vector<uint> &cluster);

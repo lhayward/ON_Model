@@ -9,6 +9,8 @@
 #ifndef VECTOR_SPINS_H
 #define VECTOR_SPINS_H
 
+#include <fstream>
+#include <iostream>
 #include "MersenneTwister.h"
 #include "Vector_NDim.h"
 
@@ -28,6 +30,7 @@ class VectorSpins
     
     Vector_NDim* getSpin(uint i);
     void         print();
+    void         print(std::ofstream* fout);
     void         randomize(MTRand &randomGen);
     void         setSpin(uint i, Vector_NDim* newSpin);
 };
