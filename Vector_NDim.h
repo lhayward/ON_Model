@@ -14,8 +14,7 @@
 class Vector_NDim 
 {
   private:
-    //static const double pi = 3.14159265358979323846; //(compiler has problem with "static")
-    double pi = 3.14159265358979323846;
+    //static const double pi = 3.14159265358979323846; //(compiler has problem with "static const") 
   public:
     typedef unsigned int  uint;
     

@@ -270,6 +270,7 @@ void Vector_NDim::print()
 /********************************* print(std::ofstream *fout) ********************************/
 void Vector_NDim::print(std::ofstream *fout)
 {
+  const double pi = 3.14159265358979323846;
   double angle=0;
   
   if(N_==2)  //for N=2 case, print angle
