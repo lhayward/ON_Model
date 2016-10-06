@@ -34,6 +34,7 @@ Ising_Model::Ising_Model(std::ifstream* fin, std::string outFileName,
   randomizeLattice(randomGen);
   
   measures.insert("sigma");
+  measures.insert("absSigma");
 }
 
 /******************************** ~Ising_Model() (destructor) ********************************/
@@ -127,12 +128,14 @@ void Ising_Model::localUpdate(MTRand &randomGen)
 /************************************* makeMeasurement() *************************************/
 void Ising_Model::makeMeasurement()
 {
-  double energyPerSpin = getEnergy()/(1.0*N_);
-  double sigmaPerSpin  = getSigmaTot()/(1.0*N_);
+  double energyPerSpin    = getEnergy()/(1.0*N_);
+  double sigmaPerSpin     = getSigmaTot()/(1.0*N_);
+  double absSigmaPerSpin  = abs(getSigmaTot())/(1.0*N_);
   
   measures.accumulate( "E",     energyPerSpin ) ;
   measures.accumulate( "ESq",   pow(energyPerSpin,2) );
   measures.accumulate( "sigma", sigmaPerSpin );
+  measures.accumulate( "absSigma", absSigmaPerSpin );
 }
 
 /**************************************** printSpins() ***************************************/
